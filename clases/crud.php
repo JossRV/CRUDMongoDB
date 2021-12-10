@@ -4,6 +4,19 @@
     require_once "conexion.php";
 
     class Crud{
+
+        // este metodo es para mostrar los datos en la tabla del documento index
+        public function mostrar(){
+            try {
+                $conexion = conexion::conectar(); // variable = clase de la hoja conexion :: llamar function ();
+                $coleccion = $conexion -> personas; // traera los datos de la tabla personas o accedera a ello  
+                $datos = $coleccion -> find(); //ya usa los comandos de mongo
+                return $datos;
+            } catch (\Throwable $th) {
+                return $th;
+            }
+       }
+
         // metodo insertarDatos       recibe datos
         public function insertarDatos($datos){
             try {
@@ -21,18 +34,50 @@
             }
         }
 
-        // este metodo es para mostrar los datos en la tabla del documento index
-        public function mostrar(){
+        // obtener el documento para mostrar en la vista eliminar y en la vista actualizar
+        public function obtenerDocumento($id){
+            $conexion = conexion::conectar();
+            $coleccion = $conexion -> personas;
             try {
-                $conexion = conexion::conectar(); // variable = clase de la hoja conexion :: llamar function ();
-                $coleccion = $conexion -> personas; // traera los datos de la tabla personas o accedera a ello  
-                $datos = $coleccion -> find(); //ya usa los comandos de mongo
+                $datos = $coleccion -> findOne(array('_id' => new MongoDB\BSON\ObjectId($id)));
                 return $datos;
             } catch (\Throwable $th) {
-                return $th;
+                throw $th;
             }
+        }
+        //    metodo eliminar datos
+        public function eliminarDatos($datos){
+            try {
+                $conexion = conexion::conectar();
+                $coleccion = $conexion -> personas;
+                $respuesta = $coleccion -> deleteOne(array('_id' => new MongoDB\BSON\ObjectId($datos)));
+                return $respuesta;
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+        }
 
-       }
+        // metodo actualizarDatos
+        public function actualizarDatos($datos){
+                try {
+                    $conexion = conexion::conectar();
+                    $coleccion = $conexion -> personas;
+                    $resultado = $coleccion -> updateOne(
+                        ['_id' => new MongoDB\BSON\ObjectId($datos['_id'])],
+                        [
+                            '$set' => [
+                                "nombre" => $datos['nombre'],
+                                "paterno" => $datos['paterno'],
+                                "materno" => $datos['materno'],
+                                "fecha_nacimiento" => $datos['fecha_nacimiento']
+                            ],
+                        ]
+                    );
+                    return $resultado;
+                } catch (\Throwable $th) {
+                    throw $th;
+                }
+            }
 
     }
 
