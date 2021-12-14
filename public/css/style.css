@@ -1,0 +1,8 @@
+
+.jumbotron{
+    /* background: linear-gradient(to right, rgb(0, 255, 115), rgb(0, 242, 255), rgb(0, 242, 255), rgb(0, 149, 255)); */
+    background-color: white;
+} 
+hr{
+    border-color: black;
+}

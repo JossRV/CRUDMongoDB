@@ -2,7 +2,7 @@
 
 <?php 
 
-    // session_start();
+    // mensaje_crud();
     require_once "../clases/crud.php";
     
     // llamare la clase Crud del documento crud para acceder a las variables de lo datos
@@ -17,7 +17,7 @@
     $respuesta = $crud->insertarDatos($datos);
 
     if($respuesta->getInsertedId() >0){
-        // $_SESSION['mensaje_crud']="insert";
+        $_SESSION['mensaje_crud']="insert";
         header("location:../index.php");
     }else{
         print_r($respuesta);

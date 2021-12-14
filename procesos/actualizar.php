@@ -21,7 +21,8 @@
     // cuando vas a actualiza, y el dato cambia se utiliza get modifiedcount,
     //  en caso contraro de que no modifique nada pero que le de al boton actualizar te lleva al index
     if($respuesta->getModifiedCount() >0 || $respuesta->getMatchedCount()>0){
-        // $_SESSION['mensaje_crud']="insert";
+        $_SESSION['mensaje']="update";
+        // echo "Swal.fire('actualizado con exito')";
         header("location:../index.php");
     }else{
         print_r($respuesta);

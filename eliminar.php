@@ -18,13 +18,13 @@
 <?php require_once "header.php" ?>
 
 <div class="jumbotron jumbotron-fluid">
-    <div class="container bg-light">
-        <h1 class="display-4"><i class="fas fa-trash-alt"></i> Eliminar</h1>
+    <div class="container">
+        <h1 class="display-4 text-center"><i class="fas fa-trash-alt"></i> Eliminar</h1>
         <hr>
         <p class="lead">
             <div class="alert alert-danger" role="alert">
-                <h4 class="alert-heading">Advertencia!</h4>
-                <p>Estas seguro de elimiar este registro ¿?</p>
+                <h4 class="alert-heading text-center text-dark">Advertencia!</h4>
+                <p class="text-center text-dark">Estas seguro de elimiar este registro ¿?</p>
                 <hr>
                 <div class="table-responsive">
                     <table class="table table-hover table-sm table-bordered">
@@ -56,6 +56,7 @@
                     </a>
                 </p>
             </div>
+            <hr>
         </p>
         <br>
     </div>

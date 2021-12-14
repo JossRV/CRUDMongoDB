@@ -79,6 +79,19 @@
                 }
             }
 
+            // muestra mensaje o ventana de sweetalert
+            public function mensaje_crud($mensaje){
+                $msg=" ";
+                if($mensaje="insert"){
+                    $msg='Swal.fire("Any fool can use a computer")';
+                }else if($mensaje="delete"){
+                    $msg='Swal.fire("Any fool can use a computer")';
+                }else if($mensaje="update"){
+                    $msg='Swal.fire("Any fool can use a computer")';
+                }
+                return $msg;
+            }
+
     }
 
 ?>

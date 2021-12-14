@@ -1,7 +1,7 @@
 
 <?php 
 
-    // session_start();
+    // mensaje_crud();
     require_once "../clases/crud.php";
 
     // llamare la clase Crud del documento crud para acceder a las variables de lo datos
@@ -13,7 +13,7 @@
     $respuesta = $crud->eliminarDatos($id);
 
     if($respuesta->getDeletedCount() >0){
-        // $_SESSION['mensaje_crud']="delete";
+        $_SESSION['mensaje_crud']="delete";
         header("location:../index.php");
     }else{
         print_r($respuesta);
